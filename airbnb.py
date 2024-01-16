@@ -191,9 +191,8 @@ def read_email_from_gmail():
 
 
 # Rest of your code...
-while True:
+if __name__ == '__main__':
     read_email_from_gmail()
     print('-------------------------------------------------------------------------------------')
     print('Total Success : ' + str(success_found))
-    success_found = 0
-    time.sleep(86400)
+
