@@ -4,3 +4,4 @@ gspread
 pandas
 lxml
 selenium
+webdriver-manager
