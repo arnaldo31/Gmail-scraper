@@ -1,32 +1,25 @@
-name: Selenium Tests
+name: Scrape
 
-on: [push, pull_request]
+on:
+  schedule:
+    - cron: "0 */20 * * *"
+  workflow_dispatch:
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
-  selenium:
+  scrape-latest:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repo
         uses: actions/checkout@v2
-
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v2.0.0
         with:
-          python-version: 3.8
-
-      - name: Install Dependencies
-        run: |
-          pip install selenium
-
-      - name: Download ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f 1)
-          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_VERSION.0/chromedriver_linux64.zip
-          unzip /tmp/chromedriver.zip -d /tmp
-          chmod +x /tmp/chromedriver
-
-      - name: Run Selenium Tests
-        run: |
-          python your_selenium_script.py  # Replace with the path to your Python script
-
+          python-version: '3.7'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Run Scraper
+        run: python airbnb.py
