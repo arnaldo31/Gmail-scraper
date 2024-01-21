@@ -15,29 +15,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
       - name: Set up Python
         uses: actions/setup-python@v2.0.0
         with:
           python-version: '3.7'
-
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
-          pip install selenium
-
-      - name: Install Chrome and ChromeDriver
-        run: |
-          LATEST_CHROME_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget https://chromedriver.storage.googleapis.com/$LATEST_CHROME_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
+      - name: Install requirements
+        run: pip install -r requirements.txt
       - name: Run Scraper
-        run: |
-          source venv/bin/activate
-          python code.py
+        run: python airbnb.py
