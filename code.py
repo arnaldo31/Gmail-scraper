@@ -1,14 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Set up Chrome options for headless mode
+s = Service(ChromeDriverManager().install())
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')  # Required for headless mode on certain platforms
 
 # Set up Selenium WebDriver with Chrome
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(service=s,options=chrome_options)
 
 # Replace 'https://example.com' with your target URL
 url = 'https://example.com'
