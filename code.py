@@ -14,7 +14,7 @@ chrome_options.add_argument('--disable-gpu')  # Required for headless mode on ce
 driver = webdriver.Chrome(service=s,options=chrome_options)
 
 # Replace 'https://example.com' with your target URL
-url = 'https://example.com'
+url = 'https://www.realtor.com/realestateandhomes-detail/M2953304470'
 
 # Navigate to the URL
 driver.get(url)
