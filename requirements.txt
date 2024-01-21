@@ -3,5 +3,3 @@ requests==2.31.0
 gspread
 pandas
 lxml
-selenium
-webdriver-manager
