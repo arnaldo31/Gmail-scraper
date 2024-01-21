@@ -37,4 +37,4 @@ jobs:
           sudo apt-get install -y google-chrome-stable
 
       - name: Run Scraper
-        run: python airbnb.py 
+        run: python code.py 
