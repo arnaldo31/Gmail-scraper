@@ -10,18 +10,23 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Java
-        uses: actions/setup-java@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          python-version: 3.8
 
-      - name: Start Selenium Server
+      - name: Install Dependencies
         run: |
-          wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-          java -jar selenium-server-standalone-3.141.59.jar:
-          background: true
+          pip install selenium
+
+      - name: Download ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f 1)
+          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_VERSION.0/chromedriver_linux64.zip
+          unzip /tmp/chromedriver.zip -d /tmp
+          chmod +x /tmp/chromedriver
 
       - name: Run Selenium Tests
         run: |
-          ./gradlew test # Replace with your build and test command
+          python your_selenium_script.py  # Replace with the path to your Python script
+
