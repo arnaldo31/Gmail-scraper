@@ -1,5 +1,5 @@
 beautifulsoup4==4.12.2
 requests==2.31.0
-gspread==5.7.2
+gspread==6.1.2
 pandas
 lxml
