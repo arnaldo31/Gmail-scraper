@@ -63,7 +63,7 @@ class getawayrvandmarine:
             save.append(item)
         
         #pprint.pprint(save)
-        worksheet.update('A1:EZ', save)
+        worksheet.update(values=save, range_name='A1')
         print('exit - 0 finish | date: ',datetime.datetime.now() , ' | total: ' + str(len(self.save)))
 
     def call_xml(self):
