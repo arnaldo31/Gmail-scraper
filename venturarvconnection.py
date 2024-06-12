@@ -114,6 +114,14 @@ def main(category:str):
         soup2 = BeautifulSoup(res.text,'html.parser')
         description = ''
         desk = soup2.find(class_='UnitDescText-main')
+        monthly = soup2.find(class_='payments-around-container')
+        if monthly != None:
+            try:
+                monthly = int(monthly.find(class_='payment-text').text.split('/')[0].replace('$','').replace(',','').strip())
+            except:
+                monthly = 0
+        else:
+            monthly = 0
         if desk != None:
             text = ''
             for tag in desk.contents:
@@ -148,7 +156,7 @@ def main(category:str):
             imgs_list = ''
 
         dic['description'] = description
-        dic['custom_number_0'] = price
+        dic['custom_number_0'] = monthly
         dic['price'] = price
         dic['sale_price'] = sale_price
         dic['link'] = url
