@@ -123,7 +123,7 @@ class getawayrvandmarine:
                         soup3 = BeautifulSoup(res2.text,'lxml')
                         payment_text = soup3.find(class_='payment-text')
                         if payment_text != None:
-                            dic['custom_number_0'] = int(payment_text.text.split('/')[0].replace('$','').strip())
+                            dic['custom_number_0'] = int(payment_text.text.split('/')[0].replace('$','').replace(',','').strip())
                         else:
                             dic['custom_number_0'] = 0
                         break
