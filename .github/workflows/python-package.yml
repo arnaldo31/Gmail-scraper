@@ -2,7 +2,7 @@ name: Scrape
 
 on:
   schedule:
-    - cron: "0 */20 * * *"
+    - cron: "0 */8 * * *"  # Every 8 hours
   workflow_dispatch:
 
 jobs:
@@ -16,9 +16,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # Change to 3.8 or higher
+          python-version: '3.8'  # Specify the desired Python version
 
-      - name: Install requirements
+      - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Run Airbnb Scraper
