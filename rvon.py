@@ -41,6 +41,7 @@ class getawayrvandmarine:
 
     def __init__(self) -> None:
         self.main_url = 'https://www.rvonedata.com/feed/export/data?accountId=543&token=7iSpt4FGgzhxwgCJ6egHGw&version=2&format=xml'
+        self.main_url = 'https://www.rvonedata.com/feed/export/data?accountId=49&token=T9M1naRQ63lofhp9Mqsu2w&version=2&format=xml'
         self.save = []
         self.count = 1
 
